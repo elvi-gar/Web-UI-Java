@@ -1,0 +1,30 @@
+package lesson3;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Test3 {
+    public static void main(String[] args) throws InterruptedException {
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://mail.ru/?from=logout");
+
+        WebElement loginField = driver.findElement(By.xpath("//input[@placeholder='Имя ящика']"));
+        loginField.sendKeys("gc_hgc");
+        driver.findElement(By.xpath("//select[@name='domain']")).click();
+        //driver.findElement(By.xpath("//*[@id=\"mailbox\"]/form[1]/div[1]/div[1]/select/option[6]/text()[2]")).click();
+        driver.findElement(By.xpath("//button[contains(text(),'Ввести пароль')]")).click();
+        driver.findElement(By.name("password")).sendKeys("!12345Qwe!");
+        driver.findElement(By.xpath("//*[@id=\"mailbox\"]/form[1]/button[2]")).click();
+        Thread.sleep(5000);
+        driver.findElement(By.xpath("//span[@class='compose-button__ico']//*[name()='svg']")).click();
+        driver.switchTo().frame(driver.findElement(By.xpath("//div[@class='container--ItIg4']//input[@type='text']")));
+        driver.findElement(By.xpath("//div[@class='container--ItIg4']//input[@type='text']")).sendKeys("elf123@internet.ru");
+        driver.findElement(By.xpath("//input[@name='Subject']")).sendKeys("Сообщение");
+        driver.findElement(By.xpath("//body/div[@class='compose-windows compose-windows_fullscreen compose-windows_rise']/div[@class='compose-app compose-app_fix compose-app_fullscreen compose-app_window']/div[@class='focus-zone focus-zone_fluid']/div[@class='compose-app__compose']/div[@class='container--rp3CE compressed--2kH7H']/div[@class='scrollview--SiHhk scrollview_main--3Vfg9 scrollview_mainCompressed--2IhQY']/div[@class='editor_container--3Rj-8']/div[@class='container--2Rl8H']/div[@class='editor-yn9d']/div[@class='editable-container-yn9d']/div[@aria-label='false']/div[1]")).sendKeys("Привет!");
+        driver.quit();
+    }
+}
