@@ -1,0 +1,19 @@
+package lesson3;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Test1 {
+    public static void main(String[] args) throws InterruptedException {
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.mothercare.ru/ru/customer/account/login/");
+        WebElement loginField = driver.findElement(By.id("email"));
+        loginField.sendKeys("elf123@internet.ru");
+        driver.findElement(By.id("pass")).sendKeys("12345qwerty");
+
+    }
+}
