@@ -1,0 +1,20 @@
+package org.example.dz04;
+
+
+public class FunctionsTriangle {
+
+    public boolean areaOfTriangle(Integer a, Integer b, Integer c) {
+
+        if (a + b < c) {
+            return false;
+        }
+        if (a + c < b) {
+            return false;
+        }
+        if (c + b < a) {
+            return false;
+        }
+        return true;
+    }
+
+}
